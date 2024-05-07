@@ -4,9 +4,9 @@
 
 ## Overview
 
-This Tic Tac Toe game is interactive console application written in Ruby.
+This Tic Tac Toe game, developed as an interactive console application in Ruby, is designed purely for fun.
 
-Designed just for fun as a playful project, it allows two players to engage in the classic game of Tic Tac Toe, taking turns to mark their symbols on a 3x3 grid.
+It offers a playful way for two players to engage in the classic game, taking turns to place their symbols on a 3x3 grid.
 
 ## Prerequisites
 
