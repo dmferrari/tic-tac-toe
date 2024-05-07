@@ -116,17 +116,49 @@ RSpec.describe Board do # rubocop:disable Metrics/BlockLength
   end
 
   describe '#win?' do # rubocop:disable Metrics/BlockLength
-    context 'when there is a winner' do
-      let(:winner_boards) do
+    context 'when there is a winner' do # rubocop:disable Metrics/BlockLength
+      let(:winner_boards) do # rubocop:disable Metrics/BlockLength
         [
-          ['X', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', 'X', 'X', 'X', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'X', 'X'],
-          ['X', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' '],
-          [' ', 'X', ' ', ' ', 'X', ' ', ' ', 'X', ' '],
-          [' ', ' ', 'X', ' ', ' ', 'X', ' ', ' ', 'X'],
-          ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'],
-          [' ', ' ', 'X', ' ', 'X', ' ', 'X', ' ', ' ']
+          [
+            'X', 'X', 'X',
+            ' ', ' ', ' ',
+            ' ', ' ', ' '
+          ],
+          [
+            ' ', ' ', ' ',
+            'X', 'X', 'X',
+            ' ', ' ', ' '
+          ],
+          [
+            ' ', ' ', ' ',
+            ' ', ' ', ' ',
+            'X', 'X', 'X'
+          ],
+          [
+            'X', ' ', ' ',
+            'X', ' ', ' ',
+            'X', ' ', ' '
+          ],
+          [
+            ' ', 'X', ' ',
+            ' ', 'X', ' ',
+            ' ', 'X', ' '
+          ],
+          [
+            ' ', ' ', 'X',
+            ' ', ' ', 'X',
+            ' ', ' ', 'X'
+          ],
+          [
+            'X', ' ', ' ',
+            ' ', 'X', ' ',
+            ' ', ' ', 'X'
+          ],
+          [
+            ' ', ' ', 'X',
+            ' ', 'X', ' ',
+            'X', ' ', ' '
+          ]
         ]
       end
 
