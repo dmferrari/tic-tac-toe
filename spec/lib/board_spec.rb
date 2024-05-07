@@ -171,7 +171,13 @@ RSpec.describe Board do # rubocop:disable Metrics/BlockLength
     end
 
     context 'when there is no winner' do
-      let(:not_winner_board) { ['X', 'O', 'X', 'O', ' ', 'O', 'X', 'O', 'X'] }
+      let(:not_winner_board) do
+        [
+          'X', 'O', 'X',
+          'O', ' ', 'O',
+          'X', 'O', 'X'
+        ]
+      end
 
       it 'returns false' do
         board.instance_variable_set(:@board, not_winner_board)
