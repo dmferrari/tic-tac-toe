@@ -32,7 +32,7 @@ bundle install
 To launch the game, navigate to the project directory and execute:
 
 ```bash
-./bin/game.rb
+./bin/game
 ```
 
 Follow the on-screen instructions to play. Each player inputs their move by selecting a position from 1 to 9 on the grid.
