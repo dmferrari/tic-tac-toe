@@ -14,11 +14,11 @@ class Board
   def display
     puts <<~BOARD
 
-       #{@board[0]} | #{@board[1]} | #{@board[2]}
+       #{token_at(0)} | #{token_at(1)} | #{token_at(2)}
       ---+---+---
-       #{@board[3]} | #{@board[4]} | #{@board[5]}
+       #{token_at(3)} | #{token_at(4)} | #{token_at(5)}
       ---+---+---
-       #{@board[6]} | #{@board[7]} | #{@board[8]}
+       #{token_at(6)} | #{token_at(7)} | #{token_at(8)}
 
     BOARD
   end
@@ -52,5 +52,9 @@ class Board
       [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
       [0, 4, 8], [2, 4, 6]             # Diagonals
     ]
+  end
+
+  def token_at(position)
+    @board[position] == EMPTY_CHAR ? position + 1 : @board[position]
   end
 end
