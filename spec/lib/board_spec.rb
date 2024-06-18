@@ -5,21 +5,41 @@ require_relative '../../lib/board'
 RSpec.describe Board do # rubocop:disable Metrics/BlockLength
   subject(:board) { described_class.new }
 
-  describe '#display' do
-    before do
-      board.instance_variable_set(:@board, %w[X O X O X O X O X])
+  describe '#display' do # rubocop:disable Metrics/BlockLength
+    context 'when the board is not full' do
+      before do
+        board.instance_variable_set(:@board, [' ', ' ', 'X', 'O', ' ', ' ', 'X', ' ', 'X'])
+      end
+
+      it 'outputs the correct board layout to stdout' do
+        expect { board.display }.to output(<<~BOARD).to_stdout
+
+           1 | 2 | X
+          ---+---+---
+           O | 5 | 6
+          ---+---+---
+           X | 8 | X
+
+        BOARD
+      end
     end
 
-    it 'outputs the correct board layout to stdout' do
-      expect { board.display }.to output(<<~BOARD).to_stdout
+    context 'when the board is full' do
+      before do
+        board.instance_variable_set(:@board, %w[X O X O X O X O X])
+      end
 
-         X | O | X
-        ---+---+---
-         O | X | O
-        ---+---+---
-         X | O | X
+      it 'outputs the correct board layout to stdout' do
+        expect { board.display }.to output(<<~BOARD).to_stdout
 
-      BOARD
+           X | O | X
+          ---+---+---
+           O | X | O
+          ---+---+---
+           X | O | X
+
+        BOARD
+      end
     end
   end
 
