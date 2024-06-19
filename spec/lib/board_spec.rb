@@ -5,7 +5,17 @@ require_relative '../../lib/board'
 RSpec.describe Board do # rubocop:disable Metrics/BlockLength
   subject(:board) { described_class.new }
 
+  shared_context 'without colors' do
+    before do
+      stub_const('Board::RESET_COLOR', '')
+      stub_const('Board::DEFAULT_COLOR', '')
+      stub_const('Board::TOKEN_COLORS', ['', ''])
+    end
+  end
+
   describe '#display' do # rubocop:disable Metrics/BlockLength
+    include_context 'without colors'
+
     context 'when the board is not full' do
       before do
         board.instance_variable_set(:@board, [' ', ' ', 'X', 'O', ' ', ' ', 'X', ' ', 'X'])
@@ -25,6 +35,8 @@ RSpec.describe Board do # rubocop:disable Metrics/BlockLength
     end
 
     context 'when the board is full' do
+      include_context 'without colors'
+
       before do
         board.instance_variable_set(:@board, %w[X O X O X O X O X])
       end
@@ -39,6 +51,42 @@ RSpec.describe Board do # rubocop:disable Metrics/BlockLength
            X | O | X
 
         BOARD
+      end
+    end
+
+    context 'token_colors' do # rubocop:disable Metrics/BlockLength
+      # Capture the output of puts in a string
+      before do
+        @output = StringIO.new
+        $stdout = @output
+      end
+
+      # Restore stdout
+      after do
+        $stdout = STDOUT
+      end
+
+      context 'player 1' do
+        before do
+          board.assign_move(0, 'X')
+        end
+
+        it 'shows the right color for player 1' do
+          board.display
+          expect(@output.string).to include(Board::TOKEN_COLORS[0])
+        end
+      end
+
+      context 'player 2' do
+        before do
+          board.assign_move(0, 'X')
+          board.assign_move(1, 'O')
+        end
+
+        it 'shows the right color for player 2' do
+          board.display
+          expect(@output.string).to include(Board::TOKEN_COLORS[1])
+        end
       end
     end
   end
