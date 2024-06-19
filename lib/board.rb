@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
 class Board
+  require_relative 'colors'
+
   class CanNotAssignMove < StandardError; end
 
   EMPTY_CHAR = ' '
+  TOKEN_COLORS = [Colors::BLUE, Colors::RED].freeze
+  DEFAULT_COLOR = Colors::DARK_GRAY
+  RESET_COLOR = Colors::RESET
 
   attr_reader :board
 
   def initialize
     @board = Array.new(9, EMPTY_CHAR)
+    @players_tokens = []
   end
 
   def display
@@ -31,6 +37,7 @@ class Board
     raise CanNotAssignMove, "Position: #{position}" unless valid_move?(position)
 
     @board[position] = character
+    assign_players_tokens(character) if @players_tokens.size < 2
   end
 
   def full?
@@ -55,6 +62,18 @@ class Board
   end
 
   def token_at(position)
-    @board[position] == EMPTY_CHAR ? position + 1 : @board[position]
+    token = @board[position] == EMPTY_CHAR ? (position + 1).to_s : @board[position]
+
+    "#{token_color(token)}#{token}#{RESET_COLOR}"
+  end
+
+  def token_color(token)
+    return DEFAULT_COLOR unless @players_tokens.include? token
+
+    TOKEN_COLORS[@players_tokens.index(token)]
+  end
+
+  def assign_players_tokens(token)
+    @players_tokens << token unless @players_tokens.include?(token)
   end
 end
