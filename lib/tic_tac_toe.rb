@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class TicTacToe
-  def initialize(player1, player2, board)
+  def initialize(first_player, second_player, board)
     @board = board
-    @player1 = player1
-    @player2 = player2
+    @first_player = first_player
+    @second_player = second_player
 
-    @current_player = @player1
+    @current_player = @first_player
   end
 
   def play
@@ -47,6 +47,6 @@ class TicTacToe
   end
 
   def switch_player
-    @current_player = @current_player == @player1 ? @player2 : @player1
+    @current_player = @current_player == @first_player ? @second_player : @first_player
   end
 end
