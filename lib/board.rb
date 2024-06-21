@@ -47,7 +47,8 @@ class Board
   def win?
     win_patterns.any? do |pattern|
       token = pattern[0]
-      @board[token] != EMPTY_CHAR && pattern.all? { |index| @board[index] == @board[token] }
+      board_token = @board[token]
+      board_token != EMPTY_CHAR && pattern.all? { |index| @board[index] == board_token }
     end
   end
 
@@ -62,7 +63,8 @@ class Board
   end
 
   def token_at(position)
-    token = @board[position] == EMPTY_CHAR ? (position + 1).to_s : @board[position]
+    board_position = @board[position]
+    token = board_position == EMPTY_CHAR ? (position + 1).to_s : board_position
 
     "#{token_color(token)}#{token}#{RESET_COLOR}"
   end
