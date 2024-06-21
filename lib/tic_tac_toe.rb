@@ -10,18 +10,22 @@ class TicTacToe
   end
 
   def play
-    @board.display
+    display_board
 
     loop do
       position = user_input
       @board.assign_move(position, @current_player.token)
-      @board.display
+      display_board
       check_game_state
       switch_player
     end
   end
 
   private
+
+  def display_board
+    @board.display
+  end
 
   def user_input
     loop do
