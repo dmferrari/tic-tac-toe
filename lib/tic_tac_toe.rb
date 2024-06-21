@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TicTacToe represents the game logic for Tic Tac Toe.
 class TicTacToe
   def initialize(first_player, second_player, board)
     @board = board

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+# Board represents the game board for Tic Tac Toe.
 class Board
   require_relative 'colors'
 
+  # Custom error class for invalid moves.
   class CanNotAssignMove < StandardError; end
 
   EMPTY_CHAR = ' '
