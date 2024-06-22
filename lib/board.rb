@@ -8,9 +8,16 @@ class Board
   class CanNotAssignMove < StandardError; end
 
   EMPTY_CHAR = ' '
-  TOKEN_COLORS = [Colors::BLUE, Colors::RED].freeze
   DEFAULT_COLOR = Colors::DARK_GRAY
   RESET_COLOR = Colors::RESET
+  TOKEN_COLORS = [
+    Colors::BLUE,
+    Colors::RED,
+    Colors::GREEN,
+    Colors::YELLOW,
+    Colors::MAGENTA,
+    Colors::CYAN
+  ].freeze
 
   attr_reader :board
 

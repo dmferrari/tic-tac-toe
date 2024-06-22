@@ -2,12 +2,10 @@
 
 # TicTacToe represents the game logic for Tic Tac Toe.
 class TicTacToe
-  def initialize(first_player, second_player, board)
+  def initialize(board, players)
     @board = board
-    @first_player = first_player
-    @second_player = second_player
-
-    @current_player = @first_player
+    @players = players
+    @current_player = @players.first
   end
 
   def play
@@ -52,6 +50,6 @@ class TicTacToe
   end
 
   def switch_player
-    @current_player = @current_player == @first_player ? @second_player : @first_player
+    @current_player = @players.rotate!.first
   end
 end
