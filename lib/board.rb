@@ -39,7 +39,7 @@ class Board
     raise CanNotAssignMove, "Position: #{position}" unless valid_move?(position)
 
     @board[position] = character
-    assign_players_tokens(character) if @players_tokens.size < 2
+    assign_players_tokens(character)
   end
 
   def full?
